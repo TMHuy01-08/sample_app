@@ -9,6 +9,11 @@ vi:
       home: "Trang chủ"
       help: "Hỗ  trợ"
       login: "Đăng nhập"
+      logout: "Đăng xuất"
+      users: "Người dùng"
+      account: "Tài khoản"
+      profile: "Thông tin cá nhân"
+      settings: "Cài đặt"
     footer:
       about: "Giới thiệu"
       contact: "Liên hệ"
@@ -49,6 +54,15 @@ vi:
       password: "Password"
       password_confirmation: "Nhập lại password"
       create: "Đăng ký tài khoản"
+  sessions:
+    new:
+      login: "Đăng nhập"
+      email: "Địa chỉ email"
+      password: "Password"
+      signup: "Đăng ký ngay!"
+      new_user: "Người dùng mới?"
+    create:
+      invalid_email_password_combination: "Email và password không trùng khớp"
   shared:
     error_messages:
       intro: "Biểu mẫu có"
