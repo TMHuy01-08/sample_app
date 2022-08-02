@@ -61,6 +61,7 @@ vi:
       password: "Password"
       signup: "Đăng ký ngay!"
       new_user: "Người dùng mới?"
+      remember_me: "Ghi nhớ tài khoản"
     create:
       invalid_email_password_combination: "Email và password không trùng khớp"
   shared:
