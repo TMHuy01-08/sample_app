@@ -2,7 +2,7 @@ vi:
   base_title: "Ruby on Rails Tutorial Sample App"
   sample_app: "Sample App"
   success_signup: "Chào mừng bạn đến với ứng dụng"
-  not_found: "Không tìm thấy."
+  not_found: "Không tìm thấy người dùng."
   fail_signup: "Có lỗi xảy ra. Vui lòng thử lại."
   layouts:
     header:
@@ -46,14 +46,34 @@ vi:
       and: "và"
       book: "cuốn sách"
   users:
-    new:
-      signup: "Đăng ký"
-      intro: "Trang đăng ký cho người dùng mới."
+    form:
       name: "Tên"
       email: "Địa chỉ email"
       password: "Password"
       password_confirmation: "Nhập lại password"
+    new:
+      signup: "Đăng ký"
+      intro: "Trang đăng ký cho người dùng mới."
       create: "Đăng ký tài khoản"
+    edit:
+      edit: "Chỉnh sửa thông tin"
+      save_changes: "Lưu thay đổi"
+      intro: "Chỉnh sửa thông tin"
+      danger: "Hãy đăng nhập"
+      incorrect_user: "Bạn không thể  sửa thông tin của người khác"
+      change: "Thay đổi"
+    update:
+      update_success: "Thông tin đã được thay đổi"
+      update_false: "Cập nhật thông tin thất bại"
+    index:
+      index_title: "Tất cả người dùng"
+    destroy:
+      user_deleted: "Đã xóa người dùng"
+      user_delete_fail: "Xóa người dùng thất bại"
+      incorrect_admin: "Bạn không phải là admin"
+    user:
+      delete: "xóa"
+      comfirm: "Bạn chắc chắn muốn xóa ?"
   sessions:
     new:
       login: "Đăng nhập"

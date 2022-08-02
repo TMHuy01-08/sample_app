@@ -14,3 +14,8 @@ validates:
   min_length: 10
   max_length: 30
   password_min_length: 6
+paginate:
+  limit: 20
+avatar:
+  size_default: 80
+  index_page: 50
