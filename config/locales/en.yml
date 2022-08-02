@@ -9,6 +9,11 @@ en:
       home: "Home"
       help: "Help"
       login: "Log in"
+      logout: "Log out"
+      users: "Users"
+      account: "Account"
+      profile: "Profile"
+      settings: "Settings"
     footer:
       about: "About"
       contact: "Contact"
@@ -49,6 +54,15 @@ en:
       password: "Password"
       password_confirmation: "Confirm password"
       create: "Create my account"
+  sessions:
+    new:
+      login: "Log in"
+      email: "Email"
+      password: "Password"
+      signup: "Sign up now!"
+      new_user: "New user?"
+    create:
+      invalid_email_password_combination: "Invalid email/password combination"
   shared:
     error_messages:
       intro: "The form contains"
