@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_28_161712) do
+ActiveRecord::Schema.define(version: 2022_08_02_012814) do
 
-  create_table "columns_priv", primary_key: ["Host", "Db", "User", "Table_name", "Column_name"], charset: "utf8mb3", collation: "utf8_bin", comment: "Column privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "columns_priv", primary_key: ["Host", "User", "Db", "Table_name", "Column_name"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Column privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "Host", default: "", null: false, collation: "ascii_general_ci"
     t.string "Db", limit: 64, default: "", null: false
     t.string "User", limit: 32, default: "", null: false
     t.string "Table_name", limit: 64, default: "", null: false
     t.string "Column_name", limit: 64, default: "", null: false
     t.timestamp "Timestamp", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.column "Column_priv", "set('Select','Insert','Update','References')", default: "", null: false, collation: "utf8_general_ci"
+    t.column "Column_priv", "set('Select','Insert','Update','References')", default: "", null: false, collation: "utf8mb3_general_ci"
   end
 
   create_table "component", primary_key: "component_id", id: { type: :integer, unsigned: true }, charset: "utf8mb3", comment: "Components", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -27,33 +27,33 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.text "component_urn", null: false
   end
 
-  create_table "db", primary_key: ["Host", "Db", "User"], charset: "utf8mb3", collation: "utf8_bin", comment: "Database privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "db", primary_key: ["Host", "User", "Db"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Database privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "Host", default: "", null: false, collation: "ascii_general_ci"
     t.string "Db", limit: 64, default: "", null: false
     t.string "User", limit: 32, default: "", null: false
-    t.column "Select_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Insert_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Update_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Delete_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Drop_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Grant_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "References_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Index_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Alter_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_tmp_table_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Lock_tables_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Show_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Alter_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Execute_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Event_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Trigger_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
+    t.column "Select_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Insert_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Update_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Delete_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Drop_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Grant_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "References_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Index_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Alter_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_tmp_table_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Lock_tables_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Show_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Alter_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Execute_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Event_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Trigger_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
     t.index ["User"], name: "User"
   end
 
-  create_table "default_roles", primary_key: ["HOST", "USER", "DEFAULT_ROLE_HOST", "DEFAULT_ROLE_USER"], charset: "utf8mb3", collation: "utf8_bin", comment: "Default roles", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "default_roles", primary_key: ["HOST", "USER", "DEFAULT_ROLE_HOST", "DEFAULT_ROLE_USER"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Default roles", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "HOST", default: "", null: false, collation: "ascii_general_ci"
     t.string "USER", limit: 32, default: "", null: false
     t.string "DEFAULT_ROLE_HOST", default: "%", null: false, collation: "ascii_general_ci"
@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.float "cost_value"
     t.timestamp "last_update", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "comment", limit: 1024
-    t.virtual "default_value", type: :float, as: "(case `cost_name` when _utf8mb4'io_block_read_cost' then 1.0 when _utf8mb4'memory_block_read_cost' then 0.25 else NULL end)"
+    t.virtual "default_value", type: :float, as: "(case `cost_name` when _utf8mb3'io_block_read_cost' then 1.0 when _utf8mb3'memory_block_read_cost' then 0.25 else NULL end)"
   end
 
-  create_table "func", primary_key: "name", id: { type: :string, limit: 64, default: "" }, charset: "utf8mb3", collation: "utf8_bin", comment: "User defined functions", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "func", primary_key: "name", id: { type: :string, limit: 64, default: "" }, charset: "utf8mb3", collation: "utf8mb3_bin", comment: "User defined functions", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "ret", limit: 1, default: 0, null: false
     t.string "dl", limit: 128, default: "", null: false
-    t.column "type", "enum('function','aggregate')", null: false, collation: "utf8_general_ci"
+    t.column "type", "enum('function','aggregate')", null: false, collation: "utf8mb3_general_ci"
   end
 
   create_table "general_log", id: false, charset: "utf8mb3", comment: "General log", options: "ENGINE=CSV", force: :cascade do |t|
@@ -85,11 +85,11 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.binary "argument", size: :medium, null: false
   end
 
-  create_table "global_grants", primary_key: ["USER", "HOST", "PRIV"], charset: "utf8mb3", collation: "utf8_bin", comment: "Extended global grants", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "global_grants", primary_key: ["USER", "HOST", "PRIV"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Extended global grants", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "USER", limit: 32, default: "", null: false
     t.string "HOST", default: "", null: false, collation: "ascii_general_ci"
-    t.string "PRIV", limit: 32, default: "", null: false, collation: "utf8_general_ci"
-    t.column "WITH_GRANT_OPTION", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
+    t.string "PRIV", limit: 32, default: "", null: false, collation: "utf8mb3_general_ci"
+    t.column "WITH_GRANT_OPTION", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
   end
 
   create_table "gtid_executed", primary_key: ["source_uuid", "interval_start"], charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.index ["name"], name: "name", unique: true
   end
 
-  create_table "innodb_index_stats", primary_key: ["database_name", "table_name", "index_name", "stat_name"], charset: "utf8mb3", collation: "utf8_bin", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "innodb_index_stats", primary_key: ["database_name", "table_name", "index_name", "stat_name"], charset: "utf8mb3", collation: "utf8mb3_bin", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "database_name", limit: 64, null: false
     t.string "table_name", limit: 199, null: false
     t.string "index_name", limit: 64, null: false
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.string "stat_description", limit: 1024, null: false
   end
 
-  create_table "innodb_table_stats", primary_key: ["database_name", "table_name"], charset: "utf8mb3", collation: "utf8_bin", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "innodb_table_stats", primary_key: ["database_name", "table_name"], charset: "utf8mb3", collation: "utf8mb3_bin", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "database_name", limit: 64, null: false
     t.string "table_name", limit: 199, null: false
     t.timestamp "last_update", default: -> { "CURRENT_TIMESTAMP" }, null: false
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.bigint "sum_of_other_index_sizes", null: false, unsigned: true
   end
 
-  create_table "password_history", primary_key: ["Host", "User", "Password_timestamp"], charset: "utf8mb3", collation: "utf8_bin", comment: "Password history for user accounts", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "password_history", primary_key: ["Host", "User", "Password_timestamp"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Password history for user accounts", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "Host", default: "", null: false, collation: "ascii_general_ci"
     t.string "User", limit: 32, default: "", null: false
     t.timestamp "Password_timestamp", precision: 6, default: -> { "CURRENT_TIMESTAMP(6)" }, null: false
@@ -155,19 +155,19 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.string "dl", limit: 128, default: "", null: false
   end
 
-  create_table "procs_priv", primary_key: ["Host", "Db", "User", "Routine_name", "Routine_type"], charset: "utf8mb3", collation: "utf8_bin", comment: "Procedure privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "procs_priv", primary_key: ["Host", "User", "Db", "Routine_name", "Routine_type"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Procedure privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "Host", default: "", null: false, collation: "ascii_general_ci"
     t.string "Db", limit: 64, default: "", null: false
     t.string "User", limit: 32, default: "", null: false
-    t.string "Routine_name", limit: 64, default: "", null: false, collation: "utf8_general_ci"
+    t.string "Routine_name", limit: 64, default: "", null: false, collation: "utf8mb3_general_ci"
     t.column "Routine_type", "enum('FUNCTION','PROCEDURE')", null: false
     t.string "Grantor", limit: 288, default: "", null: false
-    t.column "Proc_priv", "set('Execute','Alter Routine','Grant')", default: "", null: false, collation: "utf8_general_ci"
+    t.column "Proc_priv", "set('Execute','Alter Routine','Grant')", default: "", null: false, collation: "utf8mb3_general_ci"
     t.timestamp "Timestamp", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["Grantor"], name: "Grantor"
   end
 
-  create_table "proxies_priv", primary_key: ["Host", "User", "Proxied_host", "Proxied_user"], charset: "utf8mb3", collation: "utf8_bin", comment: "User proxy privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "proxies_priv", primary_key: ["Host", "User", "Proxied_host", "Proxied_user"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "User proxy privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "Host", default: "", null: false, collation: "ascii_general_ci"
     t.string "User", limit: 32, default: "", null: false
     t.string "Proxied_host", default: "", null: false, collation: "ascii_general_ci"
@@ -209,19 +209,19 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.index ["event"], name: "event"
   end
 
-  create_table "role_edges", primary_key: ["FROM_HOST", "FROM_USER", "TO_HOST", "TO_USER"], charset: "utf8mb3", collation: "utf8_bin", comment: "Role hierarchy and role grants", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "role_edges", primary_key: ["FROM_HOST", "FROM_USER", "TO_HOST", "TO_USER"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Role hierarchy and role grants", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "FROM_HOST", default: "", null: false, collation: "ascii_general_ci"
     t.string "FROM_USER", limit: 32, default: "", null: false
     t.string "TO_HOST", default: "", null: false, collation: "ascii_general_ci"
     t.string "TO_USER", limit: 32, default: "", null: false
-    t.column "WITH_ADMIN_OPTION", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
+    t.column "WITH_ADMIN_OPTION", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
   end
 
   create_table "server_cost", primary_key: "cost_name", id: { type: :string, limit: 64 }, charset: "utf8mb3", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.float "cost_value"
     t.timestamp "last_update", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "comment", limit: 1024
-    t.virtual "default_value", type: :float, as: "(case `cost_name` when _utf8mb4'disk_temptable_create_cost' then 20.0 when _utf8mb4'disk_temptable_row_cost' then 0.5 when _utf8mb4'key_compare_cost' then 0.05 when _utf8mb4'memory_temptable_create_cost' then 1.0 when _utf8mb4'memory_temptable_row_cost' then 0.1 when _utf8mb4'row_evaluate_cost' then 0.1 else NULL end)"
+    t.virtual "default_value", type: :float, as: "(case `cost_name` when _utf8mb3'disk_temptable_create_cost' then 20.0 when _utf8mb3'disk_temptable_row_cost' then 0.5 when _utf8mb3'key_compare_cost' then 0.05 when _utf8mb3'memory_temptable_create_cost' then 1.0 when _utf8mb3'memory_temptable_row_cost' then 0.1 when _utf8mb3'row_evaluate_cost' then 0.1 else NULL end)"
   end
 
   create_table "servers", primary_key: "Server_name", id: { type: :string, limit: 64, default: "" }, charset: "utf8mb3", comment: "MySQL Foreign Servers table", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
@@ -237,65 +237,65 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
 
   create_table "slave_master_info", primary_key: "Channel_name", id: { type: :string, limit: 64, comment: "The channel on which the replica is connected to a source. Used in Multisource Replication" }, charset: "utf8mb3", comment: "Master Information", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "Number_of_lines", null: false, comment: "Number of lines in the file.", unsigned: true
-    t.text "Master_log_name", null: false, collation: "utf8_bin", comment: "The name of the master binary log currently being read from the master."
+    t.text "Master_log_name", null: false, collation: "utf8mb3_bin", comment: "The name of the master binary log currently being read from the master."
     t.bigint "Master_log_pos", null: false, comment: "The master log position of the last read event.", unsigned: true
     t.string "Host", collation: "ascii_general_ci", comment: "The host name of the source."
-    t.text "User_name", collation: "utf8_bin", comment: "The user name used to connect to the master."
-    t.text "User_password", collation: "utf8_bin", comment: "The password used to connect to the master."
+    t.text "User_name", collation: "utf8mb3_bin", comment: "The user name used to connect to the master."
+    t.text "User_password", collation: "utf8mb3_bin", comment: "The password used to connect to the master."
     t.integer "Port", null: false, comment: "The network port used to connect to the master.", unsigned: true
     t.integer "Connect_retry", null: false, comment: "The period (in seconds) that the slave will wait before trying to reconnect to the master.", unsigned: true
     t.boolean "Enabled_ssl", null: false, comment: "Indicates whether the server supports SSL connections."
-    t.text "Ssl_ca", collation: "utf8_bin", comment: "The file used for the Certificate Authority (CA) certificate."
-    t.text "Ssl_capath", collation: "utf8_bin", comment: "The path to the Certificate Authority (CA) certificates."
-    t.text "Ssl_cert", collation: "utf8_bin", comment: "The name of the SSL certificate file."
-    t.text "Ssl_cipher", collation: "utf8_bin", comment: "The name of the cipher in use for the SSL connection."
-    t.text "Ssl_key", collation: "utf8_bin", comment: "The name of the SSL key file."
+    t.text "Ssl_ca", collation: "utf8mb3_bin", comment: "The file used for the Certificate Authority (CA) certificate."
+    t.text "Ssl_capath", collation: "utf8mb3_bin", comment: "The path to the Certificate Authority (CA) certificates."
+    t.text "Ssl_cert", collation: "utf8mb3_bin", comment: "The name of the SSL certificate file."
+    t.text "Ssl_cipher", collation: "utf8mb3_bin", comment: "The name of the cipher in use for the SSL connection."
+    t.text "Ssl_key", collation: "utf8mb3_bin", comment: "The name of the SSL key file."
     t.boolean "Ssl_verify_server_cert", null: false, comment: "Whether to verify the server certificate."
     t.float "Heartbeat", null: false
-    t.text "Bind", collation: "utf8_bin", comment: "Displays which interface is employed when connecting to the MySQL server"
-    t.text "Ignored_server_ids", collation: "utf8_bin", comment: "The number of server IDs to be ignored, followed by the actual server IDs"
-    t.text "Uuid", collation: "utf8_bin", comment: "The master server uuid."
+    t.text "Bind", collation: "utf8mb3_bin", comment: "Displays which interface is employed when connecting to the MySQL server"
+    t.text "Ignored_server_ids", collation: "utf8mb3_bin", comment: "The number of server IDs to be ignored, followed by the actual server IDs"
+    t.text "Uuid", collation: "utf8mb3_bin", comment: "The master server uuid."
     t.bigint "Retry_count", null: false, comment: "Number of reconnect attempts, to the master, before giving up.", unsigned: true
-    t.text "Ssl_crl", collation: "utf8_bin", comment: "The file used for the Certificate Revocation List (CRL)"
-    t.text "Ssl_crlpath", collation: "utf8_bin", comment: "The path used for Certificate Revocation List (CRL) files"
+    t.text "Ssl_crl", collation: "utf8mb3_bin", comment: "The file used for the Certificate Revocation List (CRL)"
+    t.text "Ssl_crlpath", collation: "utf8mb3_bin", comment: "The path used for Certificate Revocation List (CRL) files"
     t.boolean "Enabled_auto_position", null: false, comment: "Indicates whether GTIDs will be used to retrieve events from the master."
-    t.text "Tls_version", collation: "utf8_bin", comment: "Tls version"
-    t.text "Public_key_path", collation: "utf8_bin", comment: "The file containing public key of master server."
+    t.text "Tls_version", collation: "utf8mb3_bin", comment: "Tls version"
+    t.text "Public_key_path", collation: "utf8mb3_bin", comment: "The file containing public key of master server."
     t.boolean "Get_public_key", null: false, comment: "Preference to get public key from master."
-    t.text "Network_namespace", collation: "utf8_bin", comment: "Network namespace used for communication with the master server."
-    t.string "Master_compression_algorithm", limit: 64, null: false, collation: "utf8_bin", comment: "Compression algorithm supported for data transfer between source and replica."
+    t.text "Network_namespace", collation: "utf8mb3_bin", comment: "Network namespace used for communication with the master server."
+    t.string "Master_compression_algorithm", limit: 64, null: false, collation: "utf8mb3_bin", comment: "Compression algorithm supported for data transfer between source and replica."
     t.integer "Master_zstd_compression_level", null: false, comment: "Compression level associated with zstd compression algorithm.", unsigned: true
-    t.text "Tls_ciphersuites", collation: "utf8_bin", comment: "Ciphersuites used for TLS 1.3 communication with the master server."
+    t.text "Tls_ciphersuites", collation: "utf8mb3_bin", comment: "Ciphersuites used for TLS 1.3 communication with the master server."
     t.boolean "Source_connection_auto_failover", default: false, null: false, comment: "Indicates whether the channel connection failover is enabled."
     t.boolean "Gtid_only", default: false, null: false, comment: "Indicates if this channel only uses GTIDs and does not persist positions."
   end
 
   create_table "slave_relay_log_info", primary_key: "Channel_name", id: { type: :string, limit: 64, comment: "The channel on which the replica is connected to a source. Used in Multisource Replication" }, charset: "utf8mb3", comment: "Relay Log Information", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "Number_of_lines", null: false, comment: "Number of lines in the file or rows in the table. Used to version table definitions.", unsigned: true
-    t.text "Relay_log_name", collation: "utf8_bin", comment: "The name of the current relay log file."
+    t.text "Relay_log_name", collation: "utf8mb3_bin", comment: "The name of the current relay log file."
     t.bigint "Relay_log_pos", comment: "The relay log position of the last executed event.", unsigned: true
-    t.text "Master_log_name", collation: "utf8_bin", comment: "The name of the master binary log file from which the events in the relay log file were read."
+    t.text "Master_log_name", collation: "utf8mb3_bin", comment: "The name of the master binary log file from which the events in the relay log file were read."
     t.bigint "Master_log_pos", comment: "The master log position of the last executed event.", unsigned: true
     t.integer "Sql_delay", comment: "The number of seconds that the slave must lag behind the master."
     t.integer "Number_of_workers", unsigned: true
     t.integer "Id", comment: "Internal Id that uniquely identifies this record.", unsigned: true
-    t.string "Privilege_checks_username", limit: 32, collation: "utf8_bin", comment: "Username part of PRIVILEGE_CHECKS_USER."
+    t.string "Privilege_checks_username", limit: 32, collation: "utf8mb3_bin", comment: "Username part of PRIVILEGE_CHECKS_USER."
     t.string "Privilege_checks_hostname", collation: "ascii_general_ci", comment: "Hostname part of PRIVILEGE_CHECKS_USER."
     t.boolean "Require_row_format", null: false, comment: "Indicates whether the channel shall only accept row based events."
     t.column "Require_table_primary_key_check", "enum('STREAM','ON','OFF')", default: "STREAM", null: false, comment: "Indicates what is the channel policy regarding tables having primary keys on create and alter table queries"
     t.column "Assign_gtids_to_anonymous_transactions_type", "enum('OFF','LOCAL','UUID')", default: "OFF", null: false, comment: "Indicates whether the channel will generate a new GTID for anonymous transactions. OFF means that anonymous transactions will remain anonymous. LOCAL means that anonymous transactions will be assigned a newly generated GTID based on server_uuid. UUID indicates that anonymous transactions will be assigned a newly generated GTID based on Assign_gtids_to_anonymous_transactions_value"
-    t.text "Assign_gtids_to_anonymous_transactions_value", collation: "utf8_bin", comment: "Indicates the UUID used while generating GTIDs for anonymous transactions"
+    t.text "Assign_gtids_to_anonymous_transactions_value", collation: "utf8mb3_bin", comment: "Indicates the UUID used while generating GTIDs for anonymous transactions"
   end
 
   create_table "slave_worker_info", primary_key: ["Channel_name", "Id"], charset: "utf8mb3", comment: "Worker Information", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.integer "Id", null: false, unsigned: true
-    t.text "Relay_log_name", null: false, collation: "utf8_bin"
+    t.text "Relay_log_name", null: false, collation: "utf8mb3_bin"
     t.bigint "Relay_log_pos", null: false, unsigned: true
-    t.text "Master_log_name", null: false, collation: "utf8_bin"
+    t.text "Master_log_name", null: false, collation: "utf8mb3_bin"
     t.bigint "Master_log_pos", null: false, unsigned: true
-    t.text "Checkpoint_relay_log_name", null: false, collation: "utf8_bin"
+    t.text "Checkpoint_relay_log_name", null: false, collation: "utf8mb3_bin"
     t.bigint "Checkpoint_relay_log_pos", null: false, unsigned: true
-    t.text "Checkpoint_master_log_name", null: false, collation: "utf8_bin"
+    t.text "Checkpoint_master_log_name", null: false, collation: "utf8mb3_bin"
     t.bigint "Checkpoint_master_log_pos", null: false, unsigned: true
     t.integer "Checkpoint_seqno", null: false, unsigned: true
     t.integer "Checkpoint_group_size", null: false, unsigned: true
@@ -318,15 +318,15 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.bigint "thread_id", null: false, unsigned: true
   end
 
-  create_table "tables_priv", primary_key: ["Host", "Db", "User", "Table_name"], charset: "utf8mb3", collation: "utf8_bin", comment: "Table privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "tables_priv", primary_key: ["Host", "User", "Db", "Table_name"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Table privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "Host", default: "", null: false, collation: "ascii_general_ci"
     t.string "Db", limit: 64, default: "", null: false
     t.string "User", limit: 32, default: "", null: false
     t.string "Table_name", limit: 64, default: "", null: false
     t.string "Grantor", limit: 288, default: "", null: false
     t.timestamp "Timestamp", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.column "Table_priv", "set('Select','Insert','Update','Delete','Create','Drop','Grant','References','Index','Alter','Create View','Show view','Trigger')", default: "", null: false, collation: "utf8_general_ci"
-    t.column "Column_priv", "set('Select','Insert','Update','References')", default: "", null: false, collation: "utf8_general_ci"
+    t.column "Table_priv", "set('Select','Insert','Update','Delete','Create','Drop','Grant','References','Index','Alter','Create View','Show view','Trigger')", default: "", null: false, collation: "utf8mb3_general_ci"
+    t.column "Column_priv", "set('Select','Insert','Update','References')", default: "", null: false, collation: "utf8mb3_general_ci"
     t.index ["Grantor"], name: "Grantor"
   end
 
@@ -356,39 +356,39 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.string "Abbreviation", limit: 8, default: "", null: false
   end
 
-  create_table "user", primary_key: ["Host", "User"], charset: "utf8mb3", collation: "utf8_bin", comment: "Users and global privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  create_table "user", primary_key: ["Host", "User"], charset: "utf8mb3", collation: "utf8mb3_bin", comment: "Users and global privileges", options: "/*!50100 TABLESPACE `mysql` */ ENGINE=InnoDB STATS_PERSISTENT=0 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "Host", default: "", null: false, collation: "ascii_general_ci"
     t.string "User", limit: 32, default: "", null: false
-    t.column "Select_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Insert_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Update_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Delete_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Drop_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Reload_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Shutdown_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Process_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "File_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Grant_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "References_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Index_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Alter_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Show_db_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Super_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_tmp_table_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Lock_tables_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Execute_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Repl_slave_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Repl_client_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Show_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Alter_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_user_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Event_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Trigger_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_tablespace_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "ssl_type", "enum('','ANY','X509','SPECIFIED')", default: "", null: false, collation: "utf8_general_ci"
+    t.column "Select_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Insert_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Update_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Delete_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Drop_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Reload_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Shutdown_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Process_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "File_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Grant_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "References_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Index_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Alter_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Show_db_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Super_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_tmp_table_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Lock_tables_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Execute_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Repl_slave_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Repl_client_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Show_view_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Alter_routine_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_user_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Event_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Trigger_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_tablespace_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "ssl_type", "enum('','ANY','X509','SPECIFIED')", default: "", null: false, collation: "utf8mb3_general_ci"
     t.binary "ssl_cipher", null: false
     t.binary "x509_issuer", null: false
     t.binary "x509_subject", null: false
@@ -398,15 +398,15 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.integer "max_user_connections", default: 0, null: false, unsigned: true
     t.string "plugin", limit: 64, default: "caching_sha2_password", null: false
     t.text "authentication_string"
-    t.column "password_expired", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
+    t.column "password_expired", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
     t.timestamp "password_last_changed"
     t.integer "password_lifetime", limit: 2, unsigned: true
-    t.column "account_locked", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Create_role_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
-    t.column "Drop_role_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8_general_ci"
+    t.column "account_locked", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Create_role_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
+    t.column "Drop_role_priv", "enum('N','Y')", default: "N", null: false, collation: "utf8mb3_general_ci"
     t.integer "Password_reuse_history", limit: 2, unsigned: true
     t.integer "Password_reuse_time", limit: 2, unsigned: true
-    t.column "Password_require_current", "enum('N','Y')", collation: "utf8_general_ci"
+    t.column "Password_require_current", "enum('N','Y')", collation: "utf8mb3_general_ci"
     t.json "User_attributes"
   end
 
@@ -416,6 +416,7 @@ ActiveRecord::Schema.define(version: 2022_07_28_161712) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "remember_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
