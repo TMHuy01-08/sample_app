@@ -1,0 +1,8 @@
+<li>
+  <%= gravatar_for user, size: Settings.avatar.index_page %>
+  <%= link_to user.name, user %>
+  <% if current_user.admin? && !check_correct_user?(user) %>
+    | <%= link_to t(".delete"), user, method: :delete,
+                              data: { confirm: t(".comfirm") } %>
+  <% end %>
+</li>
