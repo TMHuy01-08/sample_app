@@ -19,3 +19,5 @@ paginate:
 avatar:
   size_default: 80
   index_page: 50
+password:
+  expired: 2
