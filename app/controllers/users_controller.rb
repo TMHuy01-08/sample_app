@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @pagy, @microposts = pagy @user.microposts.newest, page: params[:page],
+                                                        items: Settings.paginate.limit
     return if @user
 
     flash[:error] = t "not_found"
@@ -53,6 +55,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
