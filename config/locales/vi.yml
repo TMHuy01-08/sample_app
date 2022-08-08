@@ -79,6 +79,13 @@ vi:
     create:
       users_unsuccess: "Đăng ký không thành công"
       mail_notice: "Hãy kiểm tra mail để  hoàn tất đăng ký"
+    following:
+      title_show_followers: "Đang theo dõi"
+    followers:
+      title_show_following: "Được theo dõi"
+    show_follow:
+      view_my_profile: "Xem bài đăng của tôi"
+      micropost: "Bài đăng:"
   sessions:
     new:
       login: "Đăng nhập"
@@ -123,6 +130,9 @@ vi:
     user_info:
       view_my_profile: "Xem bài đăng của tôi"
       micropost: "bài đăng"
+    stats:
+      following: "đang theo dõi"
+      followers: "người theo dõi"
   account_activations:
     edit:
       user_success: "Tài khoản đã được kích hoạt"
@@ -154,11 +164,16 @@ vi:
       you_sure: "Bạn chắc chứ?"
     find_micropost:
       find_micropost_fail: "Không thể tìm thấy micropost"
-activerecord:
-    errors:
-      models:
-        micropost:
-          attributes:
-            image:
-              wrong_format: "Phải là định dạng hình ảnh hợp lệ"
-              too_big: "Kích thước hình ảnh quá lớn"
+  relationships:
+    follow_fail: "Theo dõi thất bại"
+    unfollow_fail: "Hủy theo dõi thất bại"
+  activerecord:
+      errors:
+        models:
+          micropost:
+            attributes:
+              image:
+                wrong_format: "Phải là định dạng hình ảnh hợp lệ"
+                too_big: "Kích thước hình ảnh quá lớn"
+  js:
+    maximum_size: "Kích cỡ tối đa của ảnh là 5MB. Hãy chọn ảnh có kích thước nhỏ hơn."

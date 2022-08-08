@@ -11,6 +11,7 @@ class Micropost < ApplicationRecord
                            message: :too_big}
 
   scope :newest, ->{order(created_at: :desc)}
+  scope :by_user_ids, ->(user_ids){where user_id: user_ids}
 
   delegate :name, to: :user, prefix: true
 
