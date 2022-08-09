@@ -80,6 +80,13 @@ en:
       users_success: "Welcome to the Sample App!"
       users_unsuccess: "Registration failed"
       mail_notice: "Please check your email to complete the registration"
+    following:
+      title_show_followers: "Followers"
+    followers:
+      title_show_following: "Following"
+    show_follow:
+      view_my_profile: "View my profile"
+      micropost: "Microposts:"
   sessions:
     new:
       login: "Log in"
@@ -124,6 +131,9 @@ en:
     user_info:
       view_my_profile: "View my profile"
       micropost: "micropost"
+    stats:
+      following: "following"
+      followers: "followers"
   account_activation:
     edit:
       user_success: "Account activated"
@@ -156,11 +166,16 @@ en:
       you_sure: "You sure?"
     find_micropost:
       find_micropost_fail: "Cannot find micropost"
-activerecord:
-  errors:
-    models:
-      micropost:
-        attributes:
-          image:
-            wrong_format: "Must be a valid image format"
-            too_big: "Image size is too big"
+  relationships:
+    follow_fail: "Follow fail"
+    unfollow_fail: "Unfollow fail"
+  activerecord:
+    errors:
+      models:
+        micropost:
+          attributes:
+            image:
+              wrong_format: "Must be a valid image format"
+              too_big: "Image size is too big"
+  js:
+    maximum_size: "Maximum file size is 5MB. Please choose a smaller file."
